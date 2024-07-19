@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const cors = require('cors');
+const cookieParser = require('cookie-parser')
 
 const app = express();
 
@@ -31,6 +32,13 @@ connection.once('open', () => {
 connection.on('error', (err) => {
     console.error('MongoDB connection error: ', err);
 });
+
+
+//middleware
+app.use(express.json());
+app.use(cookieParser());
+app.use(express.urlencoded('./routes/authRoutes'))
+
 
 // Root route handler
 app.get('/', (req, res) => {
