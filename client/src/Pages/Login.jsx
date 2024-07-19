@@ -3,6 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
+
 export default function Login() {
     const navigate = useNavigate();
     const [data, setData] = useState({
@@ -19,7 +20,7 @@ export default function Login() {
                 toast.error(data.error);
             } else {
                 setData({ email: '', password: '' });
-                navigate('/');
+                navigate('/dashboard');
             }
         } catch (error) {
             toast.error('An error occurred during login');
